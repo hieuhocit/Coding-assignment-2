@@ -1,0 +1,51 @@
+<aside th:fragment="sidebar" class="sidebar">
+  <nav class="menu">
+    <div class="menu-item">
+        <div class="menu-title">
+            <div class="icon">
+              <img th:src="@{/svgs/author.svg}" alt="Author icon">
+            </div>
+            <span class="title">Authors</span>
+            <span class="arrow">
+              <img th:src="@{/svgs/arrow-down.svg}" alt="Arrow icon">
+            </span>
+        </div>
+        <div class="submenu">
+            <div class="submenu-item" data-endpoint="/?page=1">List</div>
+            <div class="submenu-item" data-endpoint="/create">Create</div>
+        </div>
+    </div>
+    <div class="menu-item">
+        <div class="menu-title">
+            <div class="icon">
+              <img th:src="@{/svgs/book.svg}" alt="Book icon">
+            </div>
+            <span class="title">Books</span>
+            <span class="arrow">
+              <img th:src="@{/svgs/arrow-down.svg}" alt="Arrow icon">
+            </span>
+        </div>
+        <div class="submenu">
+          <div class="submenu-item" data-endpoint="/books?page=1">List</div>
+          <div class="submenu-item" data-endpoint="/books/create">Create</div>
+      </div>
+    </div>
+    <div class="menu-item">
+        <div class="menu-title">
+            <div class="icon">
+              <img th:src="@{/svgs/review.svg}" alt="Review icon">
+            </div>
+            <span class="title">Reviews</span>
+            <span class="arrow">
+              <img th:src="@{/svgs/arrow-down.svg}" alt="Arrow icon">
+            </span>
+        </div>
+        <div class="submenu">
+          <div class="submenu-item" data-endpoint="/reviews?page=1">List</div>
+          <div class="submenu-item" data-endpoint="/reviews/create">Create</div>
+      </div>
+    </div>
+</nav>
+</nav>
+</aside>
+

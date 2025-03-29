@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" layout:decorate="~{layouts/main-layout}">
+<head>
+    <title layout:fragment="title">Trang chủ</title>
+    
+    <th:block layout:fragment="customCSS">
+        <link rel="stylesheet" th:href="@{/styles/list.css}">
+    </th:block>
+</head>
+<body>
+    <main layout:fragment="content">
+        <table>
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Title</th>
+                    <th>Author</th> 
+                    <th>Actions</th> 
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="book, iterStat : ${books}">
+                    <td th:text="${iterStat.index + 1}">1</td>
+                    <td style="text-align: left;" th:text="${book.title}">Jack Trouteasdsasad</td>
+                    <td th:text="${book.author}">10</td>
+                    <td class="actions">
+                        <span class="edit-book" data-type="book" th:data-id="${book.id}" th:data-title="${book.title}" th:data-authorId="${book.authorId}" >
+                            <img th:src="@{/svgs/pen.svg}" alt="Pen icon">
+                        </span>
+                        <span th:onclick="'handleDelete(' + ${book.id} + ', \'/books\')'">
+                            <img th:src="@{/svgs/trash.svg}" alt="Trash icon">
+                        </span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="pagination">
+            <div>
+                <a 
+                    th:href="@{/books(page=${currentPage > 1 ? currentPage - 1 : 1})}" 
+                    th:class="${currentPage == 1} ? 'disabled' : ''"
+                >
+                    Prev
+                </a>
+            </div>
+
+            <div th:with="
+                startPage=${currentPage >= 3 ? currentPage - 1 : 1}"
+            >
+                <span th:each="pageNum : ${#numbers.sequence(startPage + 1 == totalPages && startPage - 1 >= 1 ? startPage - 1: startPage, startPage + 2 <= totalPages ? startPage + 2 : totalPages )}" style="display: inline-block;">
+                    <a  th:href="@{/books(page=${pageNum})}" 
+                        th:class="${pageNum == currentPage} ? 'active' : ''"
+                        th:text="${pageNum}"></a>
+                </span>
+            </div>
+
+            <div>
+                <a 
+                    th:href="@{/books(page=${currentPage < totalPages ? currentPage + 1 : totalPages})}"
+                    th:class="${currentPage == totalPages} ? 'disabled' : ''"
+                >
+                    Next
+                </a>
+            </div>
+        </div>
+    </main>
+    
+    <th:block layout:fragment="customJS">
+        <script th:src="@{/js/list.js}"></script>
+        <script th:src="@{/js/update.js}"></script>
+    </th:block>
+</body>
+</html>

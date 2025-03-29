@@ -1,0 +1,116 @@
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+table {
+  min-width: 500px;
+}
+
+tr {
+  transition: background-color 0.3s ease-in-out;
+}
+
+tr:hover {
+  background-color: #d6edf3;
+}
+
+th{
+  background-color: #cacaca;
+}
+
+th,td {
+  padding: 10px;
+  text-align: center;
+}
+
+.pagination{
+  margin-top: 24px;
+  display: flex;
+  justify-content: flex-end;
+  
+}
+
+.pagination div {
+  
+}
+
+.pagination div a{
+  display: inline-block;
+  text-decoration: none;
+  color: black;
+  padding: 10px 24px;
+  border: 1px solid black;
+  border-right: 0;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color .25s ease-in-out;
+}
+
+.pagination div a:hover {
+  background-color: #cacaca;
+}
+
+
+.pagination div a.active {
+  background-color: #cacaca;
+  pointer-events: none;
+  user-select: none;
+  cursor: default;
+}
+
+.pagination div a.disabled {
+  pointer-events: none;
+  user-select: none;
+  cursor: default;
+  opacity: 0.5;
+}
+
+.pagination div:last-child {
+  border-right: 1px solid black;
+}
+
+td.actions {
+  position: relative;
+  width: 100px;
+}
+
+td.actions span {
+  display: inline-block;
+  text-align: center;
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+  overflow: hidden;
+  transition: transform 0.2s ease-in-out;
+
+  position: absolute;
+  top: 50%;
+  right: calc(25% - 12px);
+  transform: translateY(-50%);
+}
+
+td.actions span:first-child {
+  left: calc(25% - 12px);
+}
+
+td.actions::after {
+  display: block;
+  content: "";
+  position: absolute;
+  width: 0.5px;
+  height: 100%;
+  background-color: black;
+  top: 0;
+  left: 50%;
+}
+
+td.actions span:hover {
+  transform: translateY(-50%) scale(1.1);
+}
+
+td.actions span img {
+  width: 100%;
+  object-fit: cover;
+  object-position: center;
+}

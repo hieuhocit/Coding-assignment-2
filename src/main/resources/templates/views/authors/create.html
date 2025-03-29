@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" layout:decorate="~{layouts/main-layout}">
+<head>
+    <title layout:fragment="title">Tạo tạo giả</title>
+    
+    <th:block layout:fragment="customCSS">
+        <link rel="stylesheet" th:href="@{/styles/create.css}">
+    </th:block>
+</head>
+<body>
+    <main layout:fragment="content">
+        <form id="create-author-form">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div id="error-message"></div>
+            <div class="actions">
+                <button class="btn" type="submit">Create</button>
+            </div>
+        </form>
+    </main>
+    
+    <th:block layout:fragment="customJS">
+        <script th:src="@{/js/create.js}"></script>
+    </th:block>
+</body>
+</html>
